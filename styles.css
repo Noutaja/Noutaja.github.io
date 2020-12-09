@@ -44,6 +44,12 @@ h1, h2{
     border-color: rgb(65, 90, 120) !important;
 }
 
+.border-bottom{
+    border-bottom: 2px solid !important;
+    border-radius: 2px;
+    border-color: rgb(65, 90, 120) !important;
+}
+
 .heading{
     margin: 0 auto 10px auto;
 }
