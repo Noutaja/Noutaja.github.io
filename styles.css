@@ -9,15 +9,33 @@ header{
 
 footer{
     text-align: center;
+    margin-top: 5px;
 }
+
 h1, h2{
     text-align: center;
 }
 
-a.title-link{
+.carousel-caption{
+    top:5%;
+    font-size: 36px;
+}
+
+.highlight{
+    color: violet;
+}
+
+.title-link{
     font-size: 24px;
     text-align: center;
     color: cornflowerblue;
+}
+
+.centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .border{
@@ -44,4 +62,8 @@ a.title-link{
 
 .margin{
     margin: 10px;
+}
+
+#asd{
+    color:white;
 }
