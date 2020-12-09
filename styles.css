@@ -38,6 +38,10 @@ h1, h2{
     transform: translate(-50%, -50%);
 }
 
+.text-content{
+    background-color:  rgb(50, 60, 90);
+}
+
 .border{
     border-width: 2px !important;
     border-radius: 2px;
