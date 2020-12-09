@@ -1,0 +1,47 @@
+body{
+    background-color: rgb(40, 50, 70);
+    color: cornflowerblue;
+}
+
+header{
+    margin-bottom: 5px;
+}
+
+footer{
+    text-align: center;
+}
+h1, h2{
+    text-align: center;
+}
+
+a.title-link{
+    font-size: 24px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+.border{
+    border-width: 2px !important;
+    border-radius: 2px;
+    border-color: rgb(65, 90, 120) !important;
+}
+
+.heading{
+    margin: 0 auto 10px auto;
+}
+
+.float-left{
+    margin-right: 10px;
+}
+
+.margin-bottom{
+    margin-bottom: 10px;
+}
+
+.padding{
+    padding: 5px;
+}
+
+.margin{
+    margin: 10px;
+}
