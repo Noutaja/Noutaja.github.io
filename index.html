@@ -7,7 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Jyri Järvinen</h1>
+	<nav>
+		<a href="#me">Me</a> |
+		<a href="#favorite">Favorites</a> |
+		<a href="#programming">Programming</a> |
+		<a href="#tip-a-game">Tip me a game</a>
+	</nav>
+    <h1 id="me">Jyri Järvinen</h1>
     <section>
     <p>
         I'm a student at Laurea University of Applied Sciences, and currently also studying at <a href="https://www.integrify.io/">Integrify</a>.
@@ -15,7 +21,7 @@
     </p>
     </section>
 
-    <h2>Favorites</h2>
+    <h2 id="favorites">Favorites</h2>
     <section>
         <table>
             <tr>
@@ -41,7 +47,7 @@
         </table>
     </section>
 
-    <h2>Programming</h2>
+    <h2 id="programming">Programming</h2>
     <section>
     <h3>Languages</h3>
     <p>Languages roughly in order of competence</p>
@@ -68,25 +74,27 @@
     </ul>
     </section>
 
-    <h2>Tip me a game</h2>
-    <form>
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name"><br>
-
-        <label for="email">Your email</label>
-        <input type="email" id="email" name="email"><br>
-
-        <label for="type">Type</label>
-        <select id="type" name="type">
-            <option value="video-game">Video game</option>
-            <option value="board-game">Board game</option>
-            <option value="roleplaying-game">Roleplaying game</option>
-        </select>
-
-        <label for="tip">Tell me about it!</label><br>
-        <textarea name="tip" id="tip" cols="40" rows="10"></textarea><br>
-
-        <input type="submit" value="Submit">
-    </form>
+    <h2 id="tip-a-game">Tip me a game</h2>
+	<section>
+    	<form>
+    	    <label for="name">Your name</label>
+    	    <input type="text" id="name" name="name"><br>
+		
+    	    <label for="email">Your email</label>
+    	    <input type="email" id="email" name="email"><br>
+		
+    	    <label for="type">Type</label>
+    	    <select id="type" name="type">
+    	        <option value="video-game">Video game</option>
+    	        <option value="board-game">Board game</option>
+    	        <option value="roleplaying-game">Roleplaying game</option>
+    	    </select>
+		
+    	    <label for="tip">Tell me about it!</label><br>
+    	    <textarea name="tip" id="tip" cols="40" rows="10"></textarea><br>
+		
+    	    <input type="submit" value="Submit">
+    	</form>
+</section>
 </body>
 </html>
