@@ -303,6 +303,9 @@ button {
 main {
   padding: 3em 0 0 0;
 }
+main button:hover, main input[type=submit]:hover {
+  background-color: burlywood;
+}
 
 article {
   display: flex;
