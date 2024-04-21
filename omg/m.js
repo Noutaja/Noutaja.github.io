@@ -393,6 +393,7 @@ $(document).ready(function () {
 		}
 		console.log(data.msg);
 		data.msg = data.msg.replace(teamClass[0], "");
+		console.log(data.msg);
 
 		var div = $("<div/>");
 		/* drink is a special case because the entire container gets the class, not
