@@ -383,8 +383,6 @@ $(document).ready(function () {
 
 		//4CC Team Colors
 		var teamClass = data.msg.match(/(-team.+-)/gi);
-		console.log("teamclass1");
-		console.log(teamClass);
 		if (teamClass) {
 			teamClass = teamClass[0].replace(new RegExp("-", "g"), "");
 		} else {
@@ -393,13 +391,7 @@ $(document).ready(function () {
 		if ($("#btn_anon").hasClass("label-success")) {
 			teamClass += " anon";
 		}
-		console.log("msg");
-		console.log(data.msg);
-		console.log("teamclass");
-		console.log(teamClass);
 		data.msg = data.msg.replace("-" + teamClass + "-", "");
-		console.log("msg2");
-		console.log(data.msg);
 
 		var div = $("<div/>");
 		/* drink is a special case because the entire container gets the class, not
