@@ -97,7 +97,9 @@ function InitTeamLists() {
 
 	$("#selectteam").remove();
 	$("#chatline2").remove();
-	//$('<textarea class="form-control" id="chatline2" rows="1"></textarea>').insertAfter('#chatline');
+	$(
+		'<textarea class="form-control" id="chatline2" rows="1"></textarea>'
+	).insertAfter("#chatline");
 	var dropup = $('<span class="dropup"></span>');
 	var selectteam = $('<div id="selectteam"></div>')
 		.insertBefore("#chatwrap>form")
