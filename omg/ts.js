@@ -403,7 +403,7 @@ $(".teamColorSpan").each(function () {
 $("#messagebuffer div span").each(function () {
 	var teamClass = $(this)
 		.html()
-		.match(/(\|@.+@\|)/gi);
+		.match(/(\|-.+-\|)/gi);
 	console.log(teamClass);
 	if (teamClass) {
 		$(this).html($(this).html().replace(teamClass[0], ""));
