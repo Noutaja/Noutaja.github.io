@@ -407,7 +407,7 @@ $("#messagebuffer div span").each(function () {
 	console.log(teamClass);
 	if (teamClass) {
 		$(this).html($(this).html().replace(teamClass[0], ""));
-		teamClass = "team" + teamClass[0].replace("|@", "").replace("@|", "");
+		teamClass = "team" + teamClass[0].replace("-team", "").replace("-", "");
 		console.log(teamClass);
 		$(this).parent().find(".username").addClass(teamClass);
 	} else {
