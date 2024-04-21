@@ -1,46 +1,25 @@
-//-Modded external js for VGL-
-//Version of original 4cc main.js: 12/03/2024
-//Changes:
-//Uses teamcolor_vgl.js with VGL team lists
-//Replaced the buttons on the top bar with vgl link buttons
-//Replaced default 4cc calendar with vgl calendar
-//Changed the default cup title to /vg/ League
-
 $(
-	'<link id="chanfavicon" href="https://implyingrigged.info/w/images/d/df/Vglg_icon.png" type="image/x-icon" rel="shortcut icon" />'
+	'<link id="chanfavicon" href="https://images2.imgbox.com/a0/f5/ESeunKnt_o.png" type="image/x-icon" rel="shortcut icon" />'
 ).appendTo("head");
 $(".navbar-brand")
-	.attr("href", "https://implyingrigged.info/wiki//vg/_League")
-	.text(" /vg/ League")
+	.attr("href", "https://boards.4chan.org/vg/catalog#s=%2Fomg%2F")
+	.text(" /omg/ League")
 	.css("padding", "0 10px 0 0")
 	.prepend(
-		'<img src="https://implyingrigged.info/w/images/d/df/Vglg_icon.png" style="display: inline;" height="20"/>'
+		'<img src="https://images2.imgbox.com/a0/f5/ESeunKnt_o.png" style="display: inline;" height="20"/>'
 	);
 $("head").append(
-	'<script type="text/javascript" src="https://rumnraisin.github.io/vglscripts/nnd.js">'
+	'<script type="text/javascript" src="https://alaac.github.io/omg/nnd.js">'
 );
 $("head").append(
-	`<script type="text/javascript" id="teamcolorJS" src="https://noutaja.github.io/omg/teamcolor_omg.js?${Date.now()}">`
+	'<script type="text/javascript" src="https://alaac.github.io/omg/ts.js">'
+);
+//$('head').append('<script type="text/javascript" src="https://implyingrigged.info/cytube/anon.js">');
+$("head").append(
+	'<script type="text/javascript" src="https://alaac.github.io/omg/em.js">'
 );
 TimeSetting = getOrDefault(CHANNEL.name + "_SCHEDULE_TIME", "UTC");
-
-//Overwrite the custom media load function to skip the warning message if the URL is angelthump
-var playerType = window.CustomEmbedPlayer;
-playerType.prototype.originalLoad = playerType.prototype.load;
-playerType.prototype.load = function (data) {
-	return [
-		"https://player.angelthump.com/?channel=",
-		"https://player.kick.com/",
-	].some((s) => data.meta.embed.src.startsWith(s))
-		? playerType.__super__.load.call(this, data)
-		: playerType.prototype.originalLoad.call(this, data);
-};
-//Click the embed button if the alert is already on the page before this runs
-$(
-	'#ytapiplayer a[href^="https://player.angelthump.com/?channel="] ~ button, #ytapiplayer a[href^="https://player.kick.com/"] ~ button'
-).click();
-
-//keep track of all the users that ever enter chat
+//test
 $(document).ready(function () {
 	/* Navbar */ {
 		//Options/Account
@@ -61,7 +40,7 @@ $(document).ready(function () {
 					.appendTo("#welcome");
 				$(this).parent().remove();
 			} else if ($(this).text() == "Layout") {
-				$(this).html($(this).html().replace("Layout", "️<b>⚙</b>"));
+				$(this).html($(this).html().replace("Layout", "<b>⚙</b>"));
 				$(this).parent().attr("ID", "settingsMenu");
 				$("li a").each(function () {
 					if ($(this).text() == "Options") {
@@ -93,7 +72,6 @@ $(document).ready(function () {
 				if (gridMode) $("#selectteam").addClass("grid");
 				else $("#selectteam").removeClass("grid");
 			});
-
 		//Bigger Emotes
 		$(
 			'<button id="btn_emoteSize" class="btn">Emote Size: <span>Small</span><span>Big</span></button>'
@@ -112,53 +90,24 @@ $(document).ready(function () {
 			$("#btn_emoteSize").click();
 
 		//Match Schedule
-		$("#nav-collapsible ul:first-child").append(
-			"<li class='dropdown'><a class='dropdown-toggle' href='#' data-toggle='dropdown' aria-expanded='false'>Match Schedule<b class='caret'></b></a><ul class='dropdown-menu' id='matchSchedule'>Time Setting: </ul></li>"
-		);
-		let btnGrp = $(
-			'<div class="btn-group" data-toggle="buttons"></div>'
-		).appendTo("#matchSchedule");
-		["UTC", "Local 24h", "Local 12h" /*'Countdown'*/].forEach(
-			(
-				val //TODO: make Countdown actually work, move label and td CSS to external
-			) =>
-				btnGrp.append(
-					`<label class="btn btn-primary${
-						val == TimeSetting ? " active" : ""
-					}" data-val="${val}" style="padding: 3px 7px;"><input type="radio" name="scheduleTime" autocomplete="off"${
-						val == TimeSetting ? " checked" : ""
-					}>${val}</label>`
-				)
-		);
-
-		btnGrp.on("click", "label", function (event) {
-			event.stopPropagation();
-			$(this).button("toggle");
-			setOpt(
-				CHANNEL.name + "_SCHEDULE_TIME",
-				(TimeSetting = this.dataset.val)
-			);
-			$("#matchSchedule th[data-UTC]").html(function () {
-				return TimeToStr(this.dataset.utc);
-			});
-		});
+		//$('#nav-collapsible ul:first-child').append("<li class='dropdown'><a class='dropdown-toggle' href='#' data-toggle='dropdown' aria-expanded='false'>Match Schedule<b class='caret'></b></a><ul class='dropdown-menu' id='matchSchedule'>Time Setting: </ul></li>");
+		//let btnGrp = $('<div class="btn-group" data-toggle="buttons"></div>').appendTo('#matchSchedule');
+		//['UTC', 'Local 24h', 'Local 12h', /*'Countdown'*/].forEach(val => //TODO: make Countdown actually work, move label and td CSS to external
+		//	btnGrp.append(`<label class="btn btn-primary${val == TimeSetting ? ' active' : ''}" data-val="${val}" style="padding: 3px 7px;"><input type="radio" name="scheduleTime" autocomplete="off"${val == TimeSetting ? ' checked' : ''}>${val}</label>`));
+		//
+		//btnGrp.on("click", "label", function(event) {
+		//	event.stopPropagation();
+		//	$(this).button('toggle');
+		//	setOpt(CHANNEL.name + "_SCHEDULE_TIME", TimeSetting = this.dataset.val);
+		//	$('#matchSchedule th[data-UTC]').html(function() { return TimeToStr(this.dataset.utc); });
+		//})
 
 		//Other shit
-		$("#nav-collapsible ul:first-child").append(
-			"<li class='dropdown'><a target='_blank' href='https://implyingrigged.info/vglgametips/'>Submit a Gametip</a></li>"
-		);
-		$("#nav-collapsible ul:first-child").append(
-			'<li><a href="https://boards.4chan.org/vg/catalog#s=vglg" target="_blank"><img src="https://s.4cdn.org/image/favicon.ico"/></a></li>'
-		);
-		$("#nav-collapsible ul:first-child").append(
-			'<li><a href="https://www.youtube.com/channel/UCMZYZp8eULxC5v097fswHcA?sub_confirmation=1" target="_blank" style="cursor:pointer;" title="Get notifications when the Cup is liv">🔔</a></li>'
-		);
-		$("#nav-collapsible ul:first-child").append(
-			'<li><a href="https://www.youtube.com/channel/UCMZYZp8eULxC5v097fswHcA" target="_blank" style="cursor:pointer;" title="Open the YouTube channel"><img src="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico"/></a></li>'
-		);
-		$("#nav-collapsible ul:first-child").append(
-			'<li><a href="https://www.twitch.tv/vglvods" target="_blank" style="cursor:pointer;" title="Watch on Twitch (much better video quality)"><img src="https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png" width=16 /></a></li>'
-		);
+		/*$('#nav-collapsible ul:first-child').append("<li class='dropdown'><a target='_blank' href='https://implyingrigged.info/vglgametips/'>Submit a Gametip</a></li>");
+		$('#nav-collapsible ul:first-child').append('<li><a href="https://www.youtube.com/channel/UCMZYZp8eULxC5v097fswHcA?sub_confirmation=1" target="_blank">Get aids when LIV</a></li>');
+		$('#nav-collapsible ul:first-child').append('<li><a href="https://www.youtube.com/channel/UCMZYZp8eULxC5v097fswHcA" target="_blank"><img src="https://s.ytimg.com/yts/img/favicon-vfl8qSV2F.ico"/></a></li>');
+		$('#nav-collapsible ul:first-child').append('<li><a href="https://boards.4channel.org/vg/catalog#s=vglg" target="_blank"><img src="https://s.4cdn.org/image/favicon.ico"/></a></li>');
+		$('#nav-collapsible ul:first-child').append('<li><a href="https://www.twitch.tv/vglvods" target="_blank"><img src="https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png" width=16 /></a></li>');*/
 	}
 
 	/* Tabs */ {
@@ -280,16 +229,15 @@ $(document).ready(function () {
 		$(
 			'<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#calendarTab">Calendar</a></li>'
 		).appendTo(tabList);
-		var baseCalendarUrl =
-			"//www.google.com/calendar/embed?showTitle=0&showNav=1&showDate=1&showTabs=1&showCalendars=1&showTz=1&wkst=1&showPrint=0&hl=en&";
+		var baseCalendarUrl = "//calendar.google.com/calendar/embed?";
 		var calendars = getOrDefault(CHANNEL.name + "_CALENDARS", null);
 		if (!Array.isArray(calendars))
 			setOpt(
 				CHANNEL.name + "_CALENDARS",
 				(calendars = [
 					{
-						src: "c9af7ed654d1d794ce989fc7ffee20bb64cde29dd43d5860b3a6e4f6d2c9a22e%40group.calendar.google.com",
-						color: "2952A3",
+						src: "c9af7ed654d1d794ce989fc7ffee20bb64cde29dd43d5860b3a6e4f6d2c9a22e%40group.calendar.google.com&ctz=UTC",
+						color: "232952A3",
 					},
 				])
 			); //set the default calendar if not already
@@ -301,6 +249,7 @@ $(document).ready(function () {
 				])
 			);
 		};
+		//command to add the comfy calendar: AddCalendar('d426h89oqa3krrq8cj00kbasgo%40group.calendar.google.com', 'AB8B00')
 		var calendarArgs = calendars
 			.map(function (cal) {
 				return "src=" + cal.src + "&color=%23" + cal.color;
@@ -367,13 +316,10 @@ $(document).ready(function () {
 						0 === t.indexOf("/m ") &&
 						((a.modflair = CLIENT.rank), (t = t.substring(3)));
 				var o = t.replace(/\s/g, "");
-
 				if (
 					CLIENT.rank < 2 &&
-					!(
-						CERTIFIED_IMAGE_POSTERS &&
-						CERTIFIED_IMAGE_POSTERS.includes(CLIENT.name)
-					)
+					window.CERTIFIED_IMAGE_POSTERS !== undefined &&
+					!CERTIFIED_IMAGE_POSTERS[CLIENT.name]
 				) {
 					t = t.replace(":pic", "");
 				}
@@ -395,16 +341,12 @@ $(document).ready(function () {
 						void socket.disconnect()
 					);
 				previousMessage = t.trim();
-				//add the teamcolor code, but only if its not a mod command
-				if (
-					TEAMCOLOR &&
-					t.match(
-						/^\/(h?poll|(s|un)?mute|kick|(ip)?ban|clean)\b/gi
-					) === null
-				) {
+				if (TEAMCOLOR) {
 					t = t + " -team" + TEAMCOLOR + "-";
 					a.modflair = "b";
 				}
+				var emotes = t.match(/(:[^:]+:)/g);
+				//emoteMammory(emotes);
 				socket.emit("chatMsg", {
 					msg: t,
 					meta: a,
@@ -440,9 +382,10 @@ $(document).ready(function () {
 		last.name = data.username;
 
 		//4CC Team Colors
-		var teamClass = data.msg.match(/(-team\S+-<\/span>$)/gi);
+		var teamClass = data.msg.match(/(-team.+-)/gi);
+		console.log(teamClass);
 		if (teamClass) {
-			teamClass = teamClass[0].replace(/-|(<\/span>)/g, "");
+			teamClass = teamClass[0].replace(new RegExp("-", "g"), "");
 		} else {
 			teamClass = "";
 		}
@@ -474,10 +417,9 @@ $(document).ready(function () {
 			name.appendTo(div);
 		}
 		$("<strong/>")
-			.addClass("username")
+			.addClass("username " + teamClass)
 			.text(data.username + ": ")
 			.appendTo(name);
-		div.addClass(teamClass);
 		if (data.meta.modflair) {
 			name.addClass(getNameColor(data.meta.modflair));
 		}
@@ -515,12 +457,12 @@ $(document).ready(function () {
 		var imgs = div.find("a>img").not(".channel-emote").parent();
 		if (imgs.length) {
 			var canPostImages =
-				(CERTIFIED_IMAGE_POSTERS &&
-					CERTIFIED_IMAGE_POSTERS.includes(data.username)) ||
+				(window.CERTIFIED_IMAGE_POSTERS !== undefined &&
+					CERTIFIED_IMAGE_POSTERS[data.username]) ||
 				$(
 					".userlist_item:contains('" +
 						data.username +
-						"'):has(.userlist_op, .userlist_owner, .userlist_siteadmin)"
+						"'):has(.userlist_op, .userlist_owner)"
 				).length !== 0;
 			if (!canPostImages) {
 				imgs.each(function () {
@@ -579,33 +521,6 @@ $(document).ready(function () {
 	$("#messagebuffer").attr("style", null);
 	$("#userlisttoggle").click();
 
-	//Overwrite the "play next video" handler to disable synch when the stream is from picarto, otherwise set it back to the saved setting
-	var changeMediaBase = Callbacks.changeMedia;
-	var picartoPattern = /^https:\/\/[\w-]+\.picarto\.tv\//g;
-	Callbacks.changeMedia = function (data) {
-		USEROPTS.synch = data.id.match(picartoPattern)
-			? false
-			: getOrDefault("synch", true);
-		changeMediaBase(data);
-	};
-	//Handle if a picarto link is already loaded
-	var videoPlayer = document.getElementById("ytapiplayer_html5_api");
-	if (
-		videoPlayer &&
-		videoPlayer.src &&
-		videoPlayer.src.match(picartoPattern)
-	) {
-		USEROPTS.synch = false;
-	}
-	//Switch back to the saved setting just for when the user settings menu is populated
-	var showUserOptionsBase = showUserOptions;
-	showUserOptions = function () {
-		var orig = USEROPTS.synch;
-		USEROPTS.synch = getOrDefault("synch", true);
-		showUserOptionsBase();
-		USEROPTS.synch = orig;
-	};
-
 	//Expand images in chat and copy emotes
 	$("#messagebuffer")
 		.off("click")
@@ -635,7 +550,7 @@ $(document).ready(function () {
 	//Set the usercount text to something funny
 	Callbacks.usercount = function (count) {
 		CHANNEL.usercount = count;
-		var text = count + (UserCountLabel || " connected users");
+		var text = count + (UserCountLabel || " EOS confirmation");
 		if (count === 69) text += " (nice)";
 		$("#usercount").html(text);
 	};
@@ -646,11 +561,11 @@ $(document).ready(function () {
 
 function chatImageToVideo(div) {
 	//convert image embeds that are actually videos to video embeds
-	var videoFileTypes = [".webm", ".mp4", ".mov"];
+	var videoFileTypes = [".webm", ".mp4"];
 	div.find("a>img").each(function (index, img) {
 		if (
 			videoFileTypes.some(function (ext) {
-				return img.src.split("?")[0].endsWith(ext);
+				return img.src.endsWith(ext);
 			})
 		) {
 			var toReplace = $(img).parent("a[href='" + img.src + "']");
@@ -671,7 +586,6 @@ function chatImageToVideo(div) {
 		}
 	});
 }
-
 function TimeToStr(time) {
 	time = new Date(parseInt(time) || time);
 	switch (TimeSetting) {
@@ -692,248 +606,198 @@ function TimeToStr(time) {
 	}
 }
 
-function ColorFromImg(url) {
-	let canv = document.createElement("canvas").getContext("2d");
-	let img = new Image();
-	let promise = new Promise(
-		(resolve) =>
-			(img.onload = function () {
-				canv.drawImage(img, 0, 0, 32, 32);
-				let color = Object.entries(
-					Array.from(canv.getImageData(0, 0, 32, 32).data)
-						.map((d, i, a) =>
-							i % 4 || a[i + 3] < 255
-								? 0
-								: d * 65536 + a[i + 1] * 256 + a[i + 2]
-						)
-						.filter((s) => s)
-						.map((s) => s.toString(16))
-						.reduce((o, v) => (o[v] = (o[v] | 0) + 1) && o, {})
-				).reduce((a, b) => (a[1] > b[1] ? a : b))[0];
-				resolve(color);
-			})
-	);
-	img.src = url;
-	return promise;
-}
-
 ScheduleLoaded = false;
 function SetMatchSchedule(pageName) {
 	if (ScheduleLoaded) return;
-	let apiEndpoint =
-		"https://implyingrigged.info/w/api.php?action=parse&prop=text&formatversion=2&format=json&origin=*&page=";
-	//Load the cup page HTML from the wiki
-	$.getJSON(apiEndpoint + pageName, function (data) {
-		//Load the HTML into a virtual document to avoid loading images
-		var ownerDocument =
-			document.implementation.createHTMLDocument("virtual");
-		//Transform all the match elements into list items and group them by date
-		//{ "99 Month 2000": [ { time: new Date("99 Month 2000 17:00 UTC"), match:"<td>home</td><td> vs </td><td>away</td>" } ] }
-		var Days = {};
-		var page = $(data.parse.text, ownerDocument);
-		page.find(".vevent").each((i, m) =>
-			(Days[$(m).find(".matchdate").html()] ||= []).push({
-				time: new Date(
-					`${$(m).find(".matchdate").html()} ${$(m)
-						.find(".matchtime abbr")
-						.html()} UTC`
-				),
-				match: `<td class="sHome">${$(m)
-					.find(".matchhome>b")
-					.text()}</td><td class="vs">vs</td><td class="sAway">${$(m)
-					.find(".matchaway>b")
-					.text()}</td>`,
-			})
-		);
-		//Sort the days and times
-		//[ { date: new Date("99 Month 2000"), matches:[ { time: new Date("99 Month 2000 17:00 UTC"), match:"<td>home</td><td> vs </td><td>away</td>" } } ]
-		Days = Object.entries(Days)
-			.map((kvp) => ({
-				date: new Date(kvp[0]),
-				matches: kvp[1].sort(
-					(a, b) => a.time.valueOf() - b.time.valueOf()
-				),
-			}))
-			.sort((a, b) => a.date.valueOf() - b.date.valueOf());
 
-		let Times = [],
-			Rows = [],
-			timeSetting = getOrDefault(CHANNEL.name + "_SCHEDULETIME", "UTC");
-		//This will be the top left cell of the table
-		let DayHeaders = `<td style="background:grey" rowspan="2"><a href="https://implyingrigged.info/wiki/${pageName}">Cup Page</a></td>`;
-		let DateHeaders = "",
-			Cols = "<col/>";
-		//Build up the rows and headers day by day
-		for (let d = 0; d < Days.length; ++d) {
-			let day = Days[d];
-			//If all the times match the current row headers, we don't need to overwrite them
-			if (
-				Times.every(
-					(time, i) =>
-						i >= day.matches.length ||
-						day.matches[i].time.toTimeString() ==
-							time.toTimeString()
-				)
-			) {
-				//subsequent days might have more matches so add the extra timeslots if necessary (including on Day 1 when we start with 0 times)
-				for (let match of day.matches.slice(Times.length)) {
-					Times.push(match.time);
-					let colspan = Rows[0]?.match(/\/td/g)?.length || 0;
-					Rows.push(
-						`<th data-utc="${match.time.valueOf()}">${TimeToStr(
-							match.time
-						)}</th>${
-							colspan > 0
-								? `<td colspan="${colspan}" style="background-color: #14161af5;"></td>`
-								: ""
-						}`
+	//Load the cup page HTML from the wiki
+	$.getJSON(
+		"https://implyingrigged.info/w/api.php?action=parse&prop=text&formatversion=2&format=json&origin=*&page=" +
+			pageName,
+		function (data) {
+			//Load the HTML into a virtual document to avoid loading images
+			var ownerDocument =
+				document.implementation.createHTMLDocument("virtual");
+			//Transform all the match elements into list items and group them by date
+			//{ "99 Month 2000": [ { time: new Date("99 Month 2000 17:00 UTC"), match:"<td>home</td><td> vs </td><td>away</td>" } ] }
+			var Days = {};
+			$(data.parse.text, ownerDocument)
+				.find(".vevent")
+				.each((i, m) =>
+					(Days[$(m).find(".matchdate").html()] ||= []).push({
+						time: new Date(
+							`${$(m).find(".matchdate").html()} ${$(m)
+								.find(".matchtime abbr")
+								.html()} UTC`
+						),
+						match: `<td class="sHome">${$(m)
+							.find(".matchhome>b")
+							.text()}</td><td class="vs">vs</td><td class="sAway">${$(
+							m
+						)
+							.find(".matchaway>b")
+							.text()}</td>`,
+					})
+				);
+			//Sort the days and times
+			//[ { date: new Date("99 Month 2000"), matches:[ { time: new Date("99 Month 2000 17:00 UTC"), match:"<td>home</td><td> vs </td><td>away</td>" } } ]
+			Days = Object.entries(Days)
+				.map((kvp) => ({
+					date: new Date(kvp[0]),
+					matches: kvp[1].sort(
+						(a, b) => a.time.valueOf() - b.time.valueOf()
+					),
+				}))
+				.sort((a, b) => a.date.valueOf() - b.date.valueOf());
+
+			let Times = [],
+				Rows = [],
+				timeSetting = getOrDefault(
+					CHANNEL.name + "_SCHEDULETIME",
+					"UTC"
+				);
+			//This will be the top left cell of the table
+			let DayHeaders = `<td style="background:grey" rowspan="2"><a href="https://implyingrigged.info/wiki/${pageName}">Cup Page</a></td>`;
+			let DateHeaders = "",
+				Cols = "<col/>";
+			//Build up the rows and headers day by day
+			for (let d = 0; d < Days.length; ++d) {
+				let day = Days[d];
+				//If all the times match the current row headers, we don't need to overwrite them
+				if (
+					Times.every(
+						(time, i) =>
+							i >= day.matches.length ||
+							day.matches[i].time.toTimeString() ==
+								time.toTimeString()
+					)
+				) {
+					//subsequent days might have more matches so add the extra timeslots if necessary (including on Day 1 when we start with 0 times)
+					for (let match of day.matches.slice(Times.length)) {
+						Times.push(match.time);
+						let colspan = Rows[0]?.match(/\/td/g)?.length || 0;
+						Rows.push(
+							`<th data-utc="${match.time.valueOf()}">${TimeToStr(
+								match.time
+							)}</th>${
+								colspan > 0
+									? `<td colspan="${colspan}" style="background-color: #14161af5;"></td>`
+									: ""
+							}`
+						);
+					}
+				} else {
+					//This matchday has different times from the previous, so we need a new column of times (the header column is empty)
+					Times = day.matches.map((m) => m.time);
+					DayHeaders += "<td></td>";
+					DateHeaders += "<td></td>";
+					Cols += "<col/>";
+					Times.forEach(
+						(t, i) =>
+							(Rows[
+								i
+							] += `<th data-utc="${t.valueOf()}">${TimeToStr(
+								t
+							)}</th>`)
 					);
 				}
-			} else {
-				//This matchday has different times from the previous, so we need a new column of times (the header column is empty)
-				Times = day.matches.map((m) => m.time);
-				DayHeaders += "<td></td>";
-				DateHeaders += "<td></td>";
-				Cols += "<col/>";
-				Times.forEach(
-					(t, i) =>
-						(Rows[i] += `<th data-utc="${t.valueOf()}">${TimeToStr(
-							t
-						)}</th>`)
-				);
+				//Add the actual data for the day
+				DayHeaders += `<th colspan="3">Day ${d + 1}</th>`;
+				DateHeaders += `<th colspan="3">${day.date
+					.toDateString()
+					.substring(0, 11)}</th>`;
+				Cols += '<col span="3"/>';
+				for (let m = 0; m < Rows.length; ++m) {
+					Rows[m] += day.matches[m]?.match || '<td colspan="3"></td>';
+				}
 			}
-			//Add the actual data for the day
-			DayHeaders += `<th colspan="3">Day ${d + 1}</th>`;
-			DateHeaders += `<th colspan="3">${day.date
-				.toDateString()
-				.substring(0, 11)}</th>`;
-			Cols += `<col span="3"${
-				d % 2 ? "" : 'style="background-color: #FFFFFF1F;"'
-			}/>`;
-			for (let m = 0; m < Rows.length; ++m) {
-				Rows[m] += day.matches[m]?.match || '<td colspan="3"></td>';
-			}
-		}
-		//Actually make the table
-		$("#matchSchedule>li").remove();
-		let table = $(
-			`<li><table><colgroup>${Cols}</colgroup><thead><tr>${DayHeaders}</tr><tr>${DateHeaders}</tr></thead><tbody>${Rows.map(
-				(r) => `<tr>${r}</tr>`
-			).join("")}</tbody></table></li>`
-		)
-			.on("mouseover", "td, th", function () {
-				//Highlight other cells with the same team on hover. Return immediately if we happen to have already done that.
-				if (this.classList.contains("highlight")) return;
-				let className = this.className;
-				$("#matchSchedule .highlight").removeClass("highlight"); //remove the old highlights
-				let isMatchCell =
-					this.tagName == "TD" && this.innerHTML && this.cellIndex;
-				if (
-					isMatchCell &&
-					this.innerHTML != "vs" &&
-					this.innerHTML != "TBD"
-				)
-					$(
-						`#matchSchedule td:contains('${this.innerHTML}')`
-					).addClass("highlight");
+			//Actually make the table
+			$("#matchSchedule>li").remove();
+			let table = $(
+				`<li><table><colgroup>${Cols}</colgroup><thead><tr>${DayHeaders}</tr><tr>${DateHeaders}</tr></thead><tbody>${Rows.map(
+					(r) => `<tr>${r}</tr>`
+				).join("")}</tbody></table></li>`
+			)
+				.on("mouseover", "td, th", function () {
+					//Highlight other cells with the same team on hover. Return immediately if we happen to have already done that.
+					if (this.classList.contains("highlight")) return;
+					let className = this.className;
+					$("#matchSchedule .highlight").removeClass("highlight"); //remove the old highlights
+					let isMatchCell =
+						this.tagName == "TD" &&
+						this.innerHTML &&
+						this.cellIndex;
+					if (
+						isMatchCell &&
+						this.innerHTML != "vs" &&
+						this.innerHTML != "TBD"
+					)
+						$(
+							`#matchSchedule td:contains('${this.innerHTML}')`
+						).addClass("highlight");
 
-				//put a lighter background on the match cells and also the column's header cells
-				if (isMatchCell && !this.classList.contains("hover")) {
-					$("#matchSchedule .hover").removeClass("hover");
-					let start =
-						this.cellIndex +
-						{ sHome: 0, vs: -1, sAway: -2 }[className];
-					Array.prototype.slice
-						.call(this.parentElement.children, start, start + 3)
-						.forEach((e) => e.classList.add("hover"));
-					$(
-						`#matchSchedule thead th:nth-of-type(${
-							$(this).prevAll(".vs").length +
-							(this.classList.contains("sAway") ? 0 : 1)
-						})`
-					).addClass("hover");
-					$("#matchSchedule .timehighlight").removeClass(
-						"timehighlight"
-					);
-					$(this).prevAll("th").first().addClass("timehighlight");
-				} else if (this.tagName == "TH") {
-					$("#matchSchedule .hover").removeClass("hover");
-					$("#matchSchedule .timehighlight").removeClass(
-						"timehighlight"
-					);
-					if (this.colSpan == 3)
+					//put a lighter background on the match cells and also the column's header cells
+					if (isMatchCell && !this.classList.contains("hover")) {
+						$("#matchSchedule .hover").removeClass("hover");
+						let start =
+							this.cellIndex +
+							{ sHome: 0, vs: -1, sAway: -2 }[className];
+						Array.prototype.slice
+							.call(this.parentElement.children, start, start + 3)
+							.forEach((e) => e.classList.add("hover"));
 						$(
 							`#matchSchedule thead th:nth-of-type(${
-								$(this).prevAll("th").length + 1
+								$(this).prevAll(".vs").length +
+								(this.classList.contains("sAway") ? 0 : 1)
 							})`
 						).addClass("hover");
-				}
-			})
-			.on("mouseleave", function () {
-				//remove all the highlights when the mouse leaves the table
-				$("#matchSchedule .highlight").removeClass("highlight");
-				$("#matchSchedule .hover").removeClass("hover");
-				$("#matchSchedule .timehighlight").removeClass("timehighlight");
-			})
-			.appendTo("#matchSchedule");
-
-		//Update all the times every 1 second
-		setInterval(function () {
-			if (TimeSetting == "Countdown")
-				$("#matchSchedule th[data-UTC]").html(function () {
-					return TimeToStr(this.dataset.utc);
-				});
-			//TODO: a day countdown?
-		}, 1000);
-
-		ScheduleLoaded = true;
-
-		if (CLIENT.rank < 3 || pageName.includes("4chan")) return;
-		//BONUS: make a team icon list
-		let teams = [].slice
-			.call(page.find("li .badgeicon-med-withborder>a"))
-			.map((a) => ({
-				id: a.getAttribute("title").replace("/", "").replace("/", '",'),
-				icon:
-					a.querySelector("img")?.getAttribute("src") ??
-					"NO ICON LMAO",
-				color: "NO TEAM PAGE LMAO",
-				pageURL:
-					apiEndpoint + a.href.slice(a.href.indexOf("/wiki/") + 6),
-				toString: function () {
-					return `\n        {id:"${this.id.padEnd(12)} color:"${
-						this.color
-					}", icon:"${this.icon}"}`;
-				},
-			}));
-		$.when(
-			...teams.map((t) =>
-				$.getJSON(t.pageURL, function (d) {
-					//Load the HTML into a virtual document to avoid loading images
-					let tmpDoc =
-						document.implementation.createHTMLDocument("virtual");
-					t.color =
-						(d.parse &&
-							$(d.parse.text, tmpDoc)
-								.find('td[width="65%"]>span[style^="color: "]')
-								.attr("style")
-								?.replace("color: ", "")
-								.replace(";", "")) ||
-						"NO COLOR LMAO";
+						$("#matchSchedule .timehighlight").removeClass(
+							"timehighlight"
+						);
+						$(this).prevAll("th").first().addClass("timehighlight");
+					} else if (this.tagName == "TH") {
+						$("#matchSchedule .hover").removeClass("hover");
+						$("#matchSchedule .timehighlight").removeClass(
+							"timehighlight"
+						);
+						if (this.colSpan == 3)
+							$(
+								`#matchSchedule thead th:nth-of-type(${
+									$(this).prevAll("th").length + 1
+								})`
+							).addClass("hover");
+					}
 				})
-			)
-		).then((promises) =>
-			console.log(`    "${pageName}":[` + teams.join(",") + "\n    ],")
-		);
-	});
+				.on("mouseleave", function () {
+					//remove all the highlights when the mouse leaves the table
+					$("#matchSchedule .highlight").removeClass("highlight");
+					$("#matchSchedule .hover").removeClass("hover");
+					$("#matchSchedule .timehighlight").removeClass(
+						"timehighlight"
+					);
+				})
+				.appendTo("#matchSchedule");
+
+			//Update all the times every 1 second
+			setInterval(function () {
+				if (TimeSetting == "Countdown")
+					$("#matchSchedule th[data-UTC]").html(function () {
+						return TimeToStr(this.dataset.utc);
+					});
+				//TODO: a day countdown?
+			}, 1000);
+
+			ScheduleLoaded = true;
+		}
+	);
 }
 
 Cups = [
 	{
-		page: "/vg/_League",
-		name: "/vg/ League",
+		page: "Main_Page",
+		name: "4chan Cup",
 		date: "Offseason",
-		icon: "https://implyingrigged.info/w/images/thumb/7/74/Vgleague.png/50px-Vgleague.png",
+		icon: "https://cdn.discordapp.com/attachments/214033499814887425/445004747989057546/clover_logo_2.png",
 		chan: null,
 	},
 ];
@@ -945,22 +809,16 @@ function SetCups(height, fontsize, cups) {
 		cup.date = cup.date || cup[2] || null;
 		cup.icon = cup.icon || cup[3] || null;
 		cup.chan = cup.chan || cup[4] || null;
-		cup.ttip = cup.ttip || cup[5] || "";
-		cup.icon = cup.icon
-			? `<img src="${cup.icon.replace(
-					new RegExp("^/(w/images/(thumb/)?)?"),
-					"https://implyingrigged.info/w/images/thumb/"
-			  )}" height="${height}"/>`
-			: "";
-		return `<span title="${
-			cup.ttip
-		}"><a href="https://implyingrigged.info/wiki/${cup.page}">${cup.icon} ${
-			cup.name
-		}</a> ${cup.date}${
+		cup.icon = (cup.icon || "").startsWith("/")
+			? "https://implyingrigged.info" + cup.icon
+			: cup.icon;
+		return `<a href="https://implyingrigged.info/wiki/${cup.page}">${
+			cup.icon ? `<img src="${cup.icon}" height="${height}"/> ` : ""
+		}${cup.name}:</a> ${cup.date}${
 			cup.chan
-				? ` <a href="${cup.chan}"><img src="https://implyingrigged.info/cytube/emotes/ChannelButton.png" height="${height}"/></a>`
+				? ` <a href="${cup.chan}"><img src="https://cdn.discordapp.com/attachments/529576837852954626/1015280261883248690/11183772.png" height="${height}"/>`
 				: ""
-		}</span>`;
+		}`;
 	});
 	cupHtmls[0] = `<b>${cupHtmls[0]}</b>`;
 	$("#streamtitle").remove();
@@ -981,7 +839,7 @@ function ChallongeTab(challongeLink, tabTitle) {
 			`<iframe src="${challongeLink}/module?show_tournament_name=1" width="100%" height="1000" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>`
 		);
 		$("#MainTabContainer>ul").append(
-			`<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#challongeTab" id="challongeTabButton" style="padding: 5px 10px;">${tabTitle}</a></li>`
+			'<li role="presentation"><a role="tab" data-toggle="tab" aria-expanded="false" href="#challongeTab" id="challongeTabButton" style="padding: 5px 10px;">GARBAGE DAY <img src="https://implyingrigged.info/cytube/emotes/garbageday.png" height="30"></a></li>'
 		);
 	}
 }
