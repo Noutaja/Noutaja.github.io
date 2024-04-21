@@ -9,14 +9,14 @@ $(".navbar-brand")
 		'<img src="https://images2.imgbox.com/a0/f5/ESeunKnt_o.png" style="display: inline;" height="20"/>'
 	);
 $("head").append(
-	'<script type="text/javascript" src="https://alaac.github.io/omg/nnd.js">'
+	'<script type="text/javascript" src="https://noutaja.github.io/omg/nnd.js">'
 );
 $("head").append(
-	'<script type="text/javascript" src="https://alaac.github.io/omg/ts.js">'
+	'<script type="text/javascript" src="https://noutaja.github.io/omg/ts.js">'
 );
 //$('head').append('<script type="text/javascript" src="https://implyingrigged.info/cytube/anon.js">');
 $("head").append(
-	'<script type="text/javascript" src="https://alaac.github.io/omg/em.js">'
+	'<script type="text/javascript" src="https://noutaja.github.io/omg/em.js">'
 );
 TimeSetting = getOrDefault(CHANNEL.name + "_SCHEDULE_TIME", "UTC");
 //test
