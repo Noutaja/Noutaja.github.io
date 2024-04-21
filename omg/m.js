@@ -392,6 +392,7 @@ $(document).ready(function () {
 			teamClass += " anon";
 		}
 		console.log(data.msg);
+		console.log(teamClass[0]);
 		data.msg = data.msg.replace(teamClass[0], "");
 		console.log(data.msg);
 
