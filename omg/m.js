@@ -391,9 +391,12 @@ $(document).ready(function () {
 		if ($("#btn_anon").hasClass("label-success")) {
 			teamClass += " anon";
 		}
+		console.log("msg");
 		console.log(data.msg);
+		console.log("teamclass");
 		console.log(teamClass[0]);
 		data.msg = data.msg.replace(teamClass[0], "");
+		console.log("msg2");
 		console.log(data.msg);
 
 		var div = $("<div/>");
