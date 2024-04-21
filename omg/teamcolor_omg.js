@@ -503,8 +503,8 @@ InitTeamLists();
 if (getOrDefault(CHANNEL.name + "_SELECTTEAM_GRID", false))
 	$("#toggleTeamSelStyle").click();
 var TEAMCOLOR = "";
-if (InlineScript4CC) InlineScript4CC();
-else setTeamList("vgl");
+/* if (InlineScript4CC) InlineScript4CC();
+else  */ setTeamList("vgl");
 
 if (TEAMCOLOR) {
 	$("#selectteam>span>img").attr("src", AllTeams[TEAMCOLOR].icon);
