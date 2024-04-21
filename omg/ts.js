@@ -403,8 +403,8 @@ $(".teamColorSpan").each(function () {
 $("#messagebuffer div span").each(function () {
 	var teamClass = $(this)
 		.html()
-		.match(/(\|@.+@\|)/gi);
-	console.log($(this).html());
+		.match(/(-team.+-)/gi);
+	console.log(teamClass);
 	if (teamClass) {
 		$(this).html($(this).html().replace(teamClass[0], ""));
 		teamClass = "team" + teamClass[0].replace("|@", "").replace("@|", "");
