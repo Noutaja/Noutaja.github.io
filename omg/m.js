@@ -391,6 +391,7 @@ $(document).ready(function () {
 		if ($("#btn_anon").hasClass("label-success")) {
 			teamClass += " anon";
 		}
+		data.msg.replace(teamClass[0], "");
 
 		var div = $("<div/>");
 		/* drink is a special case because the entire container gets the class, not
