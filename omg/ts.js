@@ -260,7 +260,7 @@ var TeamLists = {
 		},
 		{
 			id: "FrostFire",
-			color: "#",
+			color: "#FEC855",
 			icon: "https://images2.imgbox.com/8e/dc/M3QBJSqs_o.png",
 		},
 		{
