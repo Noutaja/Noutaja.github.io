@@ -383,6 +383,8 @@ $(document).ready(function () {
 
 		//4CC Team Colors
 		var teamClass = data.msg.match(/(-team.+-)/gi);
+		console.log("teamclass1");
+		console.log(teamClass);
 		if (teamClass) {
 			teamClass = teamClass[0].replace(new RegExp("-", "g"), "");
 		} else {
