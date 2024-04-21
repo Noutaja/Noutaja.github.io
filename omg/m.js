@@ -394,7 +394,7 @@ $(document).ready(function () {
 		console.log("msg");
 		console.log(data.msg);
 		console.log("teamclass");
-		console.log(teamClass[0]);
+		console.log(teamClass);
 		data.msg = data.msg.replace(teamClass[0], "");
 		console.log("msg2");
 		console.log(data.msg);
