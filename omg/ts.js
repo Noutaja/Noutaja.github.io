@@ -404,7 +404,7 @@ $("#messagebuffer div span").each(function () {
 	var teamClass = $(this)
 		.html()
 		.match(/(\|@.+@\|)/gi);
-	console.log(teamClass);
+	console.log($(this).html());
 	if (teamClass) {
 		$(this).html($(this).html().replace(teamClass[0], ""));
 		teamClass = "team" + teamClass[0].replace("|@", "").replace("@|", "");
