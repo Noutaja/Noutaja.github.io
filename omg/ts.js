@@ -328,6 +328,46 @@ var TeamLists = {
 			color: "#FFEDBA",
 			icon: "https://images2.imgbox.com/a0/a0/nYSRErcF_o.png",
 		},
+		{
+			id: "BB",
+			color: "#ffb6d3",
+			icon: "https://images2.imgbox.com/5a/36/fRvcSl0Y_o.png",
+		},
+		{
+			id: "Chat",
+			color: "#ffffff",
+			icon: "https://images2.imgbox.com/6c/57/818Lyw26_o.png",
+		},
+		{
+			id: "HatSurprise",
+			color: "#8bd3f9",
+			icon: "https://images2.imgbox.com/46/02/aZB7nEPz_o.png",
+		},
+		{
+			id: "JuliBreakers",
+			color: "#a26c5a",
+			icon: "https://images2.imgbox.com/cf/4e/uiIN9T3K_o.png",
+		},
+		{
+			id: "SoniisOnis",
+			color: "#ff9581",
+			icon: "https://images2.imgbox.com/32/2c/8BPv9SY8_o.png",
+		},
+		{
+			id: "ShobonSoniiStrikers",
+			color: "#e1dad0",
+			icon: "https://images2.imgbox.com/38/09/ygGNxd4Y_o.png",
+		},
+		{
+			id: "TheAnnouncement",
+			color: "#40eed6",
+			icon: "https://images2.imgbox.com/94/bc/n3CtAMSz_o.png",
+		},
+		{
+			id: "TipsAndTricks",
+			color: "#7cf1e1",
+			icon: "https://images2.imgbox.com/4b/9a/kK74Sm9h_o.png",
+		},
 	],
 	meme: [
 		{
