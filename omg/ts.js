@@ -360,7 +360,7 @@ var TeamLists = {
 		},
 		{
 			id: "TheAnnouncement",
-			color: "#40eed6",
+			color: "#ff99e9",
 			icon: "https://images2.imgbox.com/94/bc/n3CtAMSz_o.png",
 		},
 		{
