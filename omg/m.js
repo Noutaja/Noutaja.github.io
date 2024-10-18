@@ -321,6 +321,7 @@ $(document).ready(function () {
 					window.CERTIFIED_IMAGE_POSTERS !== undefined &&
 					!CERTIFIED_IMAGE_POSTERS[CLIENT.name]
 				) {
+					console.log("test");
 					t = t.replace(":pic", "");
 				}
 				if (
