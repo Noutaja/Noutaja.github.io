@@ -316,13 +316,14 @@ $(document).ready(function () {
 						0 === t.indexOf("/m ") &&
 						((a.modflair = CLIENT.rank), (t = t.substring(3)));
 				var o = t.replace(/\s/g, "");
-				if (
+				/* if (
 					CLIENT.rank < 2 &&
 					window.CERTIFIED_IMAGE_POSTERS !== undefined &&
 					!CERTIFIED_IMAGE_POSTERS[CLIENT.name]
 				) {
 					t = t.replace(":pic", "");
-				}
+				} */
+				t = t.replace(":pic", "");
 				if (
 					/skettifactory/.test(o) &&
 					"skettifactory" !== CHANNEL.name.toLowerCase()
@@ -456,14 +457,14 @@ $(document).ready(function () {
 		//Validate ":pic" posts: only mods and approved users
 		var imgs = div.find("a>img").not(".channel-emote").parent();
 		if (imgs.length) {
-			var canPostImages =
-				(window.CERTIFIED_IMAGE_POSTERS !== undefined &&
+			var canPostImages = true;
+			/* (window.CERTIFIED_IMAGE_POSTERS !== undefined &&
 					CERTIFIED_IMAGE_POSTERS[data.username]) ||
 				$(
 					".userlist_item:contains('" +
 						data.username +
 						"'):has(.userlist_op, .userlist_owner)"
-				).length !== 0;
+				).length !== 0; */
 			if (!canPostImages) {
 				imgs.each(function () {
 					this.innerHTML = $(this).attr("href");
