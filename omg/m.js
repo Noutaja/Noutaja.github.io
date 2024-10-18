@@ -316,14 +316,13 @@ $(document).ready(function () {
 						0 === t.indexOf("/m ") &&
 						((a.modflair = CLIENT.rank), (t = t.substring(3)));
 				var o = t.replace(/\s/g, "");
-				/* if (
+				if (
 					CLIENT.rank < 2 &&
 					window.CERTIFIED_IMAGE_POSTERS !== undefined &&
 					!CERTIFIED_IMAGE_POSTERS[CLIENT.name]
 				) {
 					t = t.replace(":pic", "");
-				} */
-				t = t.replace(":pic", "");
+				}
 				if (
 					/skettifactory/.test(o) &&
 					"skettifactory" !== CHANNEL.name.toLowerCase()
