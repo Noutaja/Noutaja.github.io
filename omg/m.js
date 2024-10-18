@@ -316,12 +316,13 @@ $(document).ready(function () {
 						0 === t.indexOf("/m ") &&
 						((a.modflair = CLIENT.rank), (t = t.substring(3)));
 				var o = t.replace(/\s/g, "");
+				console.log("test");
 				if (
 					CLIENT.rank < 2 &&
 					window.CERTIFIED_IMAGE_POSTERS !== undefined &&
 					!CERTIFIED_IMAGE_POSTERS[CLIENT.name]
 				) {
-					console.log("test");
+					console.log("test2");
 					t = t.replace(":pic", "");
 				}
 				if (
